@@ -1,0 +1,79 @@
+[
+  {
+    "name": "이의리",
+    "team": "KIA",
+    "teamId": "HT",
+    "playerId": "77441",
+    "injury": "왼쪽 팔꿈치 인대 손상",
+    "weeks": 8,
+    "elapsedWeeks": 3,
+    "status": "재활 중",
+    "since": "2026-04-02"
+  },
+  {
+    "name": "박동원",
+    "team": "KT",
+    "teamId": "KT",
+    "playerId": "68213",
+    "injury": "오른손 손가락 골절",
+    "weeks": 6,
+    "elapsedWeeks": 2,
+    "status": "재활 중",
+    "since": "2026-04-20"
+  },
+  {
+    "name": "채은성",
+    "team": "LG",
+    "teamId": "LG",
+    "playerId": "52634",
+    "injury": "햄스트링 미세 파열",
+    "weeks": 4,
+    "elapsedWeeks": 1,
+    "status": "재활 중",
+    "since": "2026-05-01"
+  },
+  {
+    "name": "최준용",
+    "team": "두산",
+    "teamId": "OB",
+    "playerId": "66532",
+    "injury": "어깨 회전근개 부분 파열",
+    "weeks": 12,
+    "elapsedWeeks": 5,
+    "status": "재활 중",
+    "since": "2026-03-20"
+  },
+  {
+    "name": "문동주",
+    "team": "한화",
+    "teamId": "HH",
+    "playerId": "73820",
+    "injury": "허리 피로 골절",
+    "weeks": 10,
+    "elapsedWeeks": 4,
+    "status": "재활 중",
+    "since": "2026-03-28"
+  },
+  {
+    "name": "김영웅",
+    "team": "삼성",
+    "teamId": "SS",
+    "playerId": "69413",
+    "injury": "발목 인대 손상",
+    "weeks": 3,
+    "elapsedWeeks": 2,
+    "status": "복귀 임박",
+    "since": "2026-04-28"
+  },
+  {
+    "name": "서건창",
+    "team": "키움",
+    "teamId": "WO",
+    "playerId": "52043",
+    "injury": "무릎 연골 손상",
+    "weeks": 16,
+    "elapsedWeeks": 7,
+    "status": "재활 중",
+    "since": "2026-03-15"
+  }
+]

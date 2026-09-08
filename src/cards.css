@@ -1,0 +1,590 @@
+/* =========================================================
+   Trading Card Premium UI
+   ========================================================= */
+
+.trading-card {
+  position: relative;
+  width: 240px;
+  height: 336px;
+  border-radius: 14px;
+  perspective: 1200px;
+  user-select: none;
+  background: var(--bg-2);
+  margin: 0 auto;
+}
+
+.trading-card.compact {
+  width: 160px;
+  height: 224px;
+  border-radius: 10px;
+}
+
+.tc-inner {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+  transform-style: preserve-3d;
+  transition: border 0.3s;
+}
+
+.trading-card.compact .tc-inner {
+  border-radius: 10px;
+}
+
+.tc-bg-wrapper {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+}
+
+.tc-bg-image {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+
+.tc-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: contrast(1.1) saturate(1.1);
+}
+
+.tc-fallback-bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.15);
+}
+
+.tc-gradient-top {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(to bottom, rgba(15,23,42,0.8), transparent);
+  z-index: 1;
+}
+
+.tc-gradient-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 60%;
+  z-index: 1;
+}
+
+/* Hologram Effects */
+.hologram-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+  z-index: 5;
+  mix-blend-mode: color-dodge;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.card-shimmer {
+  position: absolute;
+  inset: -150%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  animation: tc-shimmer 3s infinite;
+  z-index: 6;
+  pointer-events: none;
+}
+
+@keyframes tc-shimmer {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+.tc-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px;
+  justify-content: space-between;
+}
+
+.trading-card.compact .tc-content {
+  padding: 8px;
+}
+
+.tc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tc-grade {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.trading-card.compact .tc-grade {
+  font-size: 0.8rem;
+  width: 20px;
+  height: 20px;
+}
+
+.tc-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.tc-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 99px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.tc-badge.futures { background: #3b82f6; color: #fff; }
+.tc-badge.hottake { background: #ef4444; color: #fff; }
+
+.tc-my-vote {
+  background: rgba(34,197,94,0.9);
+  color: #fff;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(34,197,94,0.6);
+  backdrop-filter: blur(4px);
+}
+
+.tc-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tc-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.tc-name {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  letter-spacing: -0.02em;
+}
+
+.trading-card.compact .tc-name {
+  font-size: 0.95rem;
+}
+
+.tc-backnum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+}
+
+.tc-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.trading-card.compact .tc-meta {
+  font-size: 0.65rem;
+}
+
+.tc-pos { color: rgba(255,255,255,0.7); }
+
+.tc-divider {
+  height: 2px;
+  width: 100%;
+  margin: 6px 0;
+  opacity: 0.6;
+}
+
+.trading-card.compact .tc-divider {
+  margin: 4px 0;
+}
+
+.tc-stats-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trading-card.compact .tc-stats-container {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tc-ovr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.trading-card.compact .tc-ovr-box {
+  padding: 4px 8px;
+  flex-direction: row;
+  gap: 6px;
+  border-radius: 6px;
+}
+
+.tc-ovr-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2px;
+}
+
+.trading-card.compact .tc-ovr-label {
+  margin-bottom: 0;
+}
+
+.tc-ovr-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.trading-card.compact .tc-ovr-val {
+  font-size: 1.1rem;
+}
+
+.tc-detailed-stats {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.tc-stat-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.tc-stat-name {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+}
+
+.tc-stat-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.tc-vote-count {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+  justify-content: flex-end;
+}
+
+/* =========================================================
+   Team Selection Grid UI
+   ========================================================= */
+
+.team-selection-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  animation: fadeIn 0.4s ease;
+  min-height: 500px;
+}
+
+.team-selection-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.team-selection-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.team-grid-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.team-grid-item:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+}
+
+.team-grid-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+  transition: transform 0.3s ease;
+}
+
+.team-grid-item:hover .team-grid-logo {
+  transform: scale(1.1);
+}
+
+.team-grid-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Empty State */
+.card-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.1rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  border: 1px dashed rgba(255,255,255,0.1);
+}
+
+/* =========================================================
+   Scouting Panel Number Input UI
+   ========================================================= */
+
+.scouting-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.stat-input-row {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s ease;
+}
+
+.stat-input-row:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.stat-input-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-input-labels {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-input-label {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.stat-input-sublabel {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-input-scale {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+
+.number-input-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.num-input-wrapper {
+  border-bottom: 2px solid transparent;
+  padding: 4px 0;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  transition: border-color 0.3s;
+}
+
+.scouting-number-input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-align: center;
+  width: 100%;
+  outline: none;
+}
+
+/* 스피너 제거 */
+.scouting-number-input::-webkit-outer-spin-button,
+.scouting-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.scouting-number-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.validation-error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 6px;
+  width: 100%;
+  text-align: right;
+  animation: fadeIn 0.3s;
+}
+
+.scouting-profile-header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 20px;
+}
+
+.profile-name {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.profile-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.profile-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.card-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+  gap: 20px; 
+  width: 100%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.detail-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+.detail-card-side { flex-shrink: 0; }
+.detail-info-side { flex: 1; width: 100%; min-width: 0; }
+
+@media (max-width: 1024px) {
+  .detail-layout { flex-direction: column; align-items: center; }
+  .detail-card-side { margin-bottom: 20px; }
+}
+
+@media (max-width: 768px) {
+  .card-grid { gap: 12px; padding: 10px; grid-template-columns: repeat(2, 1fr); }
+  .trading-card { max-width: 100%; height: auto; aspect-ratio: 5/7; }
+  .trading-card.compact { max-width: 100%; height: auto; aspect-ratio: 5/7; }
+  .tc-detailed-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .scouting-inputs .stat-input-row > div:nth-child(2) { flex-direction: column; align-items: stretch; gap: 8px; }
+  .number-input-control { width: 100%; justify-content: space-between; }
+}
